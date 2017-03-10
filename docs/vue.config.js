@@ -3,8 +3,10 @@ module.exports = {
   html: {
     template: resolve(__dirname, './template.tpl')
   },
-  webpack: function (webpackConfig) {
-    webpackConfig.output.publicPath = '/vue-trend/'
+  webpack: function (webpackConfig, options) {
+    if (options.production) {
+      webpackConfig.output.publicPath = '/vue-trend-component/'
+    }
 
     return webpackConfig
   }

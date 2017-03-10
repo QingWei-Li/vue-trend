@@ -1,4 +1,4 @@
-# vue-trend
+# vue-trend-component
 [![Build Status](https://travis-ci.org/QingWei-Li/vue-trend.svg?branch=master)](https://travis-ci.org/QingWei-Li/vue-trend)
 [![npm](https://img.shields.io/npm/v/vue-trend.svg)](https://www.npmjs.com/package/vue-trend)
 <!-- [![Coverage Status](https://coveralls.io/repos/github/QingWei-Li/vue-trend/badge.svg?branch=master)](https://coveralls.io/github/QingWei-Li/vue-trend?branch=master) -->
@@ -7,15 +7,15 @@
 
 ## Installation
 ```shell
-npm i vue-trend -S
+npm i vue-trend-component -S
 ```
 
 ## Usage
 ```javascript
 import Vue from 'vue'
-import VueTrend from 'vue-trend'
+import Trend from 'vue-trend-component'
 
-Vue.use(VueTrend)
+Vue.use(Trend)
 ```
 
 ## TODO

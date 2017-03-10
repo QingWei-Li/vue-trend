@@ -9,8 +9,8 @@ export default {
     vue: 'Vue'
   },
   targets: [
-    { dest: 'dist/vue-trend.js', format: 'umd' },
-    { dest: 'dist/vue-trend.common.js', format: 'cjs' },
-    { dest: 'dist/vue-trend.esm.js', format: 'es' }
+    { dest: 'dist/vue-trend-component.js', format: 'umd' },
+    { dest: 'dist/vue-trend-component.common.js', format: 'cjs' },
+    { dest: 'dist/vue-trend-component.esm.js', format: 'es' }
   ]
 }
