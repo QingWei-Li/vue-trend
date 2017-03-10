@@ -1,7 +1,7 @@
 # vue-trend
 [![Build Status](https://travis-ci.org/QingWei-Li/vue-trend.svg?branch=master)](https://travis-ci.org/QingWei-Li/vue-trend)
-<!-- [![Coverage Status](https://coveralls.io/repos/github/QingWei-Li/vue-trend/badge.svg?branch=master)](https://coveralls.io/github/QingWei-Li/vue-trend?branch=master) -->
 [![npm](https://img.shields.io/npm/v/vue-trend.svg)](https://www.npmjs.com/package/vue-trend)
+<!-- [![Coverage Status](https://coveralls.io/repos/github/QingWei-Li/vue-trend/badge.svg?branch=master)](https://coveralls.io/github/QingWei-Li/vue-trend?branch=master) -->
 
 > 🌈 Simple, elegant spark lines for Vue.js
 
