@@ -1,6 +1,6 @@
 {
   "name": "vue-trend-component",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple, elegant spark lines for Vue.js",
   "main": "dist/vue-trend-component.common.js",
   "module": "dist/vue-trend-component.esm.js",
