@@ -12,7 +12,7 @@
     "test": "eslint src && jest",
     "dev": "vue build docs/app.js -c docs/vue.config.js",
     "docs:build": "vue build docs/app.js -c docs/vue.config.js --prod --dist ./docs/dist",
-    "deploy": "gh-pages -d docs/dist",
+    "deploy": "npm run docs:build && gh-pages -d docs/dist",
     "build": "rollup -c --environment BUILD && uglifyjs dist/vue-trend.js > dist/vue-trend.min.js"
   },
   "keywords": [
