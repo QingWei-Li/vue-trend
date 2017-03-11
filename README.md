@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cloud.githubusercontent.com/assets/7565692/23819825/e4b7c518-0646-11e7-84cd-4801d29022fc.png" width="500" alt="Vue Trend">
+  <img src="https://cloud.githubusercontent.com/assets/7565692/23819883/063b9ec0-0648-11e7-9682-bca9e5e9b1ad.png" width="500" alt="Vue Trend">
   <br>
   <h1>Vue Trend</h1>
   <p>🌈 Simple, elegant spark lines for Vue.js</p>
