@@ -1,5 +1,6 @@
 import Path from './path'
 import Gradient from './gradient'
+import { injectStyle } from '../helpers/dom'
 
 export default {
   name: 'Trend',
@@ -40,7 +41,7 @@ export default {
       return
     }
 
-    this.animation = `
+    this.styleEl = injectStyle(`
 @keyframes ${pathId}-autodraw {
   0% {
     stroke-dashoffset: ${len};
@@ -65,11 +66,11 @@ export default {
   animation:
     ${pathId}-autodraw ${autoDrawDuration}ms ${autoDrawEasing},
     ${pathId}-autodraw-cleanup 1ms ${autoDrawDuration}ms;
-}`
+}`)
   },
 
-  data () {
-    return { animation: '' }
+  destroyed () {
+    this.styleEl && this.styleEl.remove()
   },
 
   render (h) {
@@ -97,7 +98,6 @@ export default {
         viewBox: `0 0 ${viewWidth} ${viewHeight}`
       }
     }, [
-      h('style', null, this.animation),
       h(Gradient, { props }),
       h(Path, {
         props,
