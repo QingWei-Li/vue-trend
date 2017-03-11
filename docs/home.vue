@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <github-badge slug="QingWei-Li/vue-trend" />
+    <github-badge slug="QingWei-Li/vueTrend" />
 
     <h1>Vue Trend</h1>
     <p> Simple, elegant spark lines for Vue.js</p>
@@ -13,7 +13,7 @@
 
     <pre class="code-wrap"><code class="code" v-html="code"></code></pre>
 
-    <footer>Released under the <a href="//github.com/QingWei-Li/vue-trend/blob/master/LICENSE">MIT</a> license. <a href="//github.com/QingWei-Li/vue-trend">View source.</a></footer>
+    <footer>Released under the <a href="//github.com/QingWei-Li/vueTrend/blob/master/LICENSE">MIT</a> license. <a href="//github.com/QingWei-Li/vueTrend">View source.</a></footer>
   </main>
 </template>
 

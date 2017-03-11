@@ -5,7 +5,7 @@ module.exports = {
   },
   webpack: function (webpackConfig, options) {
     if (options.production) {
-      webpackConfig.output.publicPath = '/vue-trend-component/'
+      webpackConfig.output.publicPath = '/vue-trend/'
     }
 
     return webpackConfig
