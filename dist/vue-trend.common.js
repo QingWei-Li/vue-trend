@@ -132,6 +132,18 @@ var Gradient = {
   }
 };
 
+function injectStyle (css) {
+  // http://stackoverflow.com/questions/524696/how-to-create-a-style-tag-with-javascript
+  var tag = document.createElement('style');
+  var head = document.head || document.getElementsByTagName('head')[0];
+
+  tag.type = 'text/css';
+  head.appendChild(tag);
+  tag.appendChild(document.createTextNode(css));
+
+  return tag
+}
+
 var Trend$1 = {
   name: 'Trend',
 
@@ -175,11 +187,11 @@ var Trend$1 = {
       return
     }
 
-    this.animation = "\n@keyframes " + pathId + "-autodraw {\n  0% {\n    stroke-dashoffset: " + len + ";\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: 0;\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n@keyframes " + pathId + "-autodraw-cleanup {\n  to {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n#" + pathId + " {\n  animation:\n    " + pathId + "-autodraw " + autoDrawDuration + "ms " + autoDrawEasing + ",\n    " + pathId + "-autodraw-cleanup 1ms " + autoDrawDuration + "ms;\n}";
+    this.styleEl = injectStyle(("\n@keyframes " + pathId + "-autodraw {\n  0% {\n    stroke-dashoffset: " + len + ";\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: 0;\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n@keyframes " + pathId + "-autodraw-cleanup {\n  to {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n#" + pathId + " {\n  animation:\n    " + pathId + "-autodraw " + autoDrawDuration + "ms " + autoDrawEasing + ",\n    " + pathId + "-autodraw-cleanup 1ms " + autoDrawDuration + "ms;\n}"));
   },
 
-  data: function data () {
-    return { animation: '' }
+  destroyed: function destroyed () {
+    this.styleEl && this.styleEl.remove();
   },
 
   render: function render (h) {
@@ -210,7 +222,6 @@ var Trend$1 = {
         viewBox: ("0 0 " + viewWidth + " " + viewHeight)
       }
     }, [
-      h('style', null, this.animation),
       h(Gradient, { props: props }),
       h(Path, {
         props: props,
