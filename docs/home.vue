@@ -8,6 +8,7 @@
       :data="data"
       :gradient="gradient"
       auto-draw
+      :stroke-width="1.4"
       smooth>
     </trend>
 
@@ -47,7 +48,7 @@
 
   .main {
     max-width: 650px;
-    margin: 15vh auto 0;
+    margin: 15vh auto 20px;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
