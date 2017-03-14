@@ -1,5 +1,6 @@
 {
   "name": "vuetrend",
+  "productionName": "Vue Trend",
   "version": "0.2.1",
   "description": "Simple, elegant spark lines for Vue.js",
   "main": "dist/vue-trend.common.js",
