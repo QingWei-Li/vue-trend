@@ -29,7 +29,9 @@
   },
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "license": "MIT",
-  "peerDependencies": {},
+  "peerDependencies": {
+    "vue": "^2.2.4"
+  },
   "devDependencies": {
     "eslint": "^3.17.1",
     "eslint-config-vue": "^2.0.2",
