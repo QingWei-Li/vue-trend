@@ -13,6 +13,21 @@
 
 <br>
 
+## Installation
+
+```shell
+npm i vuetrend -S
+```
+
+## Usage
+
+```js
+import Vue from 'vue'
+import Trend from 'vuetrend'
+
+Vue.use(Trend)
+```
+
 *vue template*
 
 ```html
