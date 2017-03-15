@@ -12,7 +12,7 @@
   "scripts": {
     "test": "eslint src && jest",
     "dev": "vbuild docs/app.js --dev",
-    "docs:build": "vbuild docs/app.js --dist docs/dist --homepage /vue-trend/",
+    "docs:build": "vbuild docs/app.js --dist docs/dist",
     "deploy": "npm run docs:build && gh-pages -d docs/dist",
     "build": "rollup -c --environment BUILD && uglifyjs dist/vue-trend.js > dist/vue-trend.min.js"
   },
@@ -28,6 +28,7 @@
     "type": "git",
     "url": "https://github.com/QingWei-Li/vue-trend.git"
   },
+  "homepage": "https://qingwei-li.github.io/vue-trend/",
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "license": "MIT",
   "peerDependencies": {

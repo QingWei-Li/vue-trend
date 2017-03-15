@@ -5,25 +5,13 @@
   <p>🌈 Simple, elegant spark lines for Vue.js</p>
   <br>
   <a href="https://www.npmjs.org/package/vuetrend"><img src="https://img.shields.io/npm/v/vuetrend.png?style=flat-square" alt="npm"></a>
-  <a href="https://travis-ci.org/qingwei-li/vue-trend"><img src="https://img.shields.io/travis/qingwei-li/vue-trend/master.png?style=flat-square" alt="travis"></a>
+  <!-- <a href="https://travis-ci.org/qingwei-li/vue-trend"><img src="https://img.shields.io/travis/qingwei-li/vue-trend/master.png?style=flat-square" alt="travis"></a> -->
+  <img src="https://img.shields.io/badge/vue-^2.2-4fc08d.svg?colorA=2c3e50&style=flat-square" alt="vue">
+
   <!-- <a href="https://codecov.io/github/qingwei-li/vue-trend"><img src="https://img.shields.io/codecov/c/github/qingwei-li/vue-trend.svg" alt="travis"></a> -->
 </div>
 
 <br>
-
-
-## Installation
-```shell
-npm i vuetrend -S
-```
-
-## Usage
-```javascript
-import Vue from 'vue'
-import Trend from 'vuetrend'
-
-Vue.use(Trend)
-```
 
 *vue template*
 
@@ -35,6 +23,8 @@ Vue.use(Trend)
   smooth>
 </trend>
 ```
+
+[Live Demo](https://jsfiddle.net/nyh18bLq/)
 
 ## API
 

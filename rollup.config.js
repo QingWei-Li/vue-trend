@@ -4,10 +4,6 @@ export default {
   entry: 'src/index.js',
   plugins: [buble()],
   moduleName: 'vue-trend',
-  external: ['vue'],
-  globals: {
-    vue: 'Vue'
-  },
   targets: [
     { dest: 'dist/vue-trend.js', format: 'umd' },
     { dest: 'dist/vue-trend.common.js', format: 'cjs' },

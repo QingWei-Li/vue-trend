@@ -3,7 +3,7 @@
     <github-badge slug="QingWei-Li/vue-trend" />
 
     <h1>Vue Trend</h1>
-    <p> Simple, elegant spark lines for Vue.js</p>
+    <p> Simple, elegant spark lines for Vue.js <a href="https://jsfiddle.net/nyh18bLq/">Live Demo</a></p>
     <trend
       :data="data"
       :gradient="gradient"
