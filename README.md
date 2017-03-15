@@ -26,11 +26,15 @@
 
 [Live Demo](https://jsfiddle.net/nyh18bLq/)
 
+## Inspired
+
+[unsplash/react-trend](https://github.com/unsplash/react-trend) - 📈 Simple, elegant spark lines
+
 ## API
 
 #### SVG Props
 
-By default, all properties not recognized by React Trend will be delegated to the SVG. The line inherits these properties if none of its own override them.
+By default, all properties not recognized by Vue Trend will be delegated to the SVG. The line inherits these properties if none of its own override them.
 
 This means that, among other properties, you can use:
 
@@ -107,9 +111,9 @@ This prop has no effect if `autoDraw` isn't set to `true`.
 |-----------------|----------|-------------|
 | [Number\|Object] | ✓        | `undefined` |
 
-The data accepted by React Trend is incredibly simple: An array of y-axis values to graph.
+The data accepted by Vue Trend is incredibly simple: An array of y-axis values to graph.
 
-React Trend takes care of normalization, so don't worry about ensuring the data is in a specific range.
+Vue Trend takes care of normalization, so don't worry about ensuring the data is in a specific range.
 
 This does mean that all data points will be evenly-spaced. If you have irregularly-spaced data, it will not be properly represented.
 
@@ -127,7 +131,7 @@ As of v1.2.0, you may supply an array of data objects with a `value` property.
 |----------|----------|-------------|
 | [String] | ✕        | `undefined` |
 
-React Trend supports vertical gradients. It accepts an array of 2+ colour values, and will fade evenly between them from the bottom up.
+Vue Trend supports vertical gradients. It accepts an array of 2+ colour values, and will fade evenly between them from the bottom up.
 
 Colour can be specified as any SVG-supported format (named, rgb, hex, etc).
 
@@ -218,10 +222,6 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 ## TODO
 - Unit test
 
-
-## Inspired
-
-[unsplash/react-trend](https://github.com/unsplash/react-trend) - 📈 Simple, elegant spark lines
 
 ## License
 MIT
