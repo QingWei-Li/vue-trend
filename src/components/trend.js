@@ -33,49 +33,65 @@ export default {
     smooth: Boolean
   },
 
-  mounted () {
-    const len = this.$refs.path.$el.getTotalLength()
-    const { pathId, autoDrawDuration, autoDrawEasing, autoDraw } = this
+  destroyed () {
+    this.removeStyle()
+  },
 
-    if (!autoDraw) {
-      return
-    }
+  methods: {
+    addStyle () {
+      this.removeStyle()
+      const len = this.$refs.path.$el.getTotalLength()
+      const { pathId, autoDrawDuration, autoDrawEasing, autoDraw } = this
 
-    this.styleEl = injectStyle(`
+      if (!autoDraw) {
+        return
+      }
+
+      this.styleEl = injectStyle(`
 @keyframes ${pathId}-autodraw {
   0% {
-    stroke-dashoffset: ${len};
-    stroke-dasharray: ${len};
-  }
-  100% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: ${len};
-  }
-  100% {
-    stroke-dashoffset: '';
-    stroke-dasharray: '';
-  }
+  stroke-dashoffset: ${len};
+  stroke-dasharray: ${len};
+}
+100% {
+  stroke-dashoffset: 0;
+  stroke-dasharray: ${len};
+}
+100% {
+  stroke-dashoffset: '';
+  stroke-dasharray: '';
+}
 }
 @keyframes ${pathId}-autodraw-cleanup {
-  to {
-    stroke-dashoffset: '';
-    stroke-dasharray: '';
+to {
+  stroke-dashoffset: '';
+  stroke-dasharray: '';
   }
 }
 #${pathId} {
-  animation:
-    ${pathId}-autodraw ${autoDrawDuration}ms ${autoDrawEasing},
-    ${pathId}-autodraw-cleanup 1ms ${autoDrawDuration}ms;
+animation:
+  ${pathId}-autodraw ${autoDrawDuration}ms ${autoDrawEasing},
+  ${pathId}-autodraw-cleanup 1ms ${autoDrawDuration}ms;
 }`)
+    },
+
+    removeStyle () {
+      this.styleEl && this.styleEl.remove()
+    }
   },
 
-  destroyed () {
-    this.styleEl && this.styleEl.remove()
+  watch: {
+    data: {
+      immediate: true,
+      handler (val) {
+        if (!val || val.length < 2) return
+        this.$nextTick(this.addStyle)
+      }
+    }
   },
 
   render (h) {
     if (!this.data || this.data.length < 2) return
-
     const { width, height, padding } = this
     const viewWidth = width || 300
     const viewHeight = height || 75
