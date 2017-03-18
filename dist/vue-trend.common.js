@@ -175,28 +175,44 @@ var Trend$1 = {
     smooth: Boolean
   },
 
-  mounted: function mounted () {
-    var len = this.$refs.path.$el.getTotalLength();
-    var ref = this;
-    var pathId = ref.pathId;
-    var autoDrawDuration = ref.autoDrawDuration;
-    var autoDrawEasing = ref.autoDrawEasing;
-    var autoDraw = ref.autoDraw;
-
-    if (!autoDraw) {
-      return
-    }
-
-    this.styleEl = injectStyle(("\n@keyframes " + pathId + "-autodraw {\n  0% {\n    stroke-dashoffset: " + len + ";\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: 0;\n    stroke-dasharray: " + len + ";\n  }\n  100% {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n@keyframes " + pathId + "-autodraw-cleanup {\n  to {\n    stroke-dashoffset: '';\n    stroke-dasharray: '';\n  }\n}\n#" + pathId + " {\n  animation:\n    " + pathId + "-autodraw " + autoDrawDuration + "ms " + autoDrawEasing + ",\n    " + pathId + "-autodraw-cleanup 1ms " + autoDrawDuration + "ms;\n}"));
+  destroyed: function destroyed () {
+    this.removeStyle();
   },
 
-  destroyed: function destroyed () {
-    this.styleEl && this.styleEl.remove();
+  methods: {
+    addStyle: function addStyle () {
+      this.removeStyle();
+      var len = this.$refs.path.$el.getTotalLength();
+      var ref = this;
+      var pathId = ref.pathId;
+      var autoDrawDuration = ref.autoDrawDuration;
+      var autoDrawEasing = ref.autoDrawEasing;
+      var autoDraw = ref.autoDraw;
+
+      if (!autoDraw) {
+        return
+      }
+
+      this.styleEl = injectStyle(("\n@keyframes " + pathId + "-autodraw {\n  0% {\n  stroke-dashoffset: " + len + ";\n  stroke-dasharray: " + len + ";\n}\n100% {\n  stroke-dashoffset: 0;\n  stroke-dasharray: " + len + ";\n}\n100% {\n  stroke-dashoffset: '';\n  stroke-dasharray: '';\n}\n}\n@keyframes " + pathId + "-autodraw-cleanup {\nto {\n  stroke-dashoffset: '';\n  stroke-dasharray: '';\n  }\n}\n#" + pathId + " {\nanimation:\n  " + pathId + "-autodraw " + autoDrawDuration + "ms " + autoDrawEasing + ",\n  " + pathId + "-autodraw-cleanup 1ms " + autoDrawDuration + "ms;\n}"));
+    },
+
+    removeStyle: function removeStyle () {
+      this.styleEl && this.styleEl.remove();
+    }
+  },
+
+  watch: {
+    data: {
+      immediate: true,
+      handler: function handler (val) {
+        if (!val || val.length < 2) { return }
+        this.$nextTick(this.addStyle);
+      }
+    }
   },
 
   render: function render (h) {
     if (!this.data || this.data.length < 2) { return }
-
     var ref = this;
     var width = ref.width;
     var height = ref.height;
