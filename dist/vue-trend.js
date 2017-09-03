@@ -47,12 +47,12 @@ function genPoints (arr, ref) {
   var maxY = ref.maxY;
 
   arr = arr.map(function (item) { return typeof item === 'number' ? item : item.value; });
-  var minValue = Math.min.apply(Math, arr);
+  var minValue = Math.min.apply(Math, arr) - 0.001;
   var gridX = (maxX - minX) / (arr.length - 1);
-  var gridY = (maxY - minY) / (Math.max.apply(Math, arr) - minValue);
+  var gridY = (maxY - minY) / (Math.max.apply(Math, arr) + 0.001 - minValue);
 
   return arr.map(function (value, index) {
-    return { x: index * gridX + minX, y: maxY - (value - minValue) * gridY }
+    return { x: index * gridX + minX, y: maxY - (value - minValue) * gridY + +(index == (arr.length - 1)) * 0.00001 - +(index == 0) * 0.00001 }
   })
 }
 
