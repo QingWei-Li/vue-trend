@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "eslint src && jest",
+    "test": "eslint src --fix && jest",
     "dev": "vbuild docs/app.js --dev",
     "docs:build": "vbuild docs/app.js --dist docs/dist",
     "deploy": "npm run docs:build && gh-pages -d docs/dist",
