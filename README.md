@@ -235,6 +235,14 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 <trend :width="200" :height="200" />
 ```
 
+## Development
+
+```sh
+yarn
+yarn dev
+# open localhost:4000
+```
+
 
 ## TODO
 - Unit test
