@@ -12,9 +12,6 @@
 </div>
 
 
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/YdWAqnN2kHQmLtFQhEddaaPT/QingWei-Li/vue-trend'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/YdWAqnN2kHQmLtFQhEddaaPT/QingWei-Li/vue-trend.svg' /></a>
-
 ## Installation
 
 ```shell
