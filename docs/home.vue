@@ -22,13 +22,13 @@ import Trend from '../src/index.js';
 import hanabi from 'hanabi';
 import GithubBadge from 'vue-github-badge';
 
-  export default {
-    components: { Trend, GithubBadge },
+export default {
+  components: { Trend, GithubBadge },
 
   created() {
     this.data = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0];
     this.gradient = ['#6fa8dc', '#42b983', '#2c3e50'];
-      this.code = hanabi(`<trend
+    this.code = hanabi(`<trend
   :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
   :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
   auto-draw
@@ -39,43 +39,43 @@ import GithubBadge from 'vue-github-badge';
 </script>
 
 <style>
-  h1 {
-    margin: 0;
-    font-size: 3rem;
-    font-weight: normal;
-  }
+h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: normal;
+}
 
-  .main {
-    max-width: 650px;
-    margin: 15vh auto 20px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    font-size: 14px;
-  }
+.main {
+  max-width: 650px;
+  margin: 15vh auto 20px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  font-size: 14px;
+}
 
-  .code-wrap {
-    text-align: left;
-    background-color: #f8f8f8;
-    padding: 1.2em 1.4em;
-    line-height: 1.5em;
-    margin: 60px 0 0;
-    overflow: auto;
-  }
+.code-wrap {
+  text-align: left;
+  background-color: #f8f8f8;
+  padding: 1.2em 1.4em;
+  line-height: 1.5em;
+  margin: 60px 0 0;
+  overflow: auto;
+}
 
-  .code {
-    margin: 0;
-    padding: 0;
-  }
+.code {
+  margin: 0;
+  padding: 0;
+}
 
-  footer {
-    margin-top: 40px;
-    line-height: 2;
-  }
+footer {
+  margin-top: 40px;
+  line-height: 2;
+}
 
-  a {
-    color: #42b983;
-  }
+a {
+  color: #42b983;
+}
 </style>
