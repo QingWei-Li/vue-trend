@@ -52,7 +52,7 @@ function genPoints (arr, ref, ref$1) {
   var minValue = Math.min.apply(Math, arr.concat( [min] )) - 0.001;
   var gridX = (maxX - minX) / (arr.length - 1);
   var gridY = (maxY - minY) / (Math.max.apply(Math, arr.concat( [max] )) + 0.001 - minValue);
-  console.log(gridX, minValue);
+
   return arr.map(function (value, index) {
     return {
       x: index * gridX + minX,
@@ -100,14 +100,22 @@ function genPath (points, radius) {
 }
 
 var Path = {
-  props: ['smooth', 'data', 'boundary', 'radius', 'id', 'range'],
+  props: ['smooth', 'data', 'boundary', 'radius', 'id', 'max', 'min'],
 
   render: function render (h) {
-    var points = genPoints(this.data, this.boundary, this.range);
-    var d = genPath(points, this.smooth ? this.radius : 0);
+    var ref = this;
+    var data = ref.data;
+    var smooth = ref.smooth;
+    var boundary = ref.boundary;
+    var radius = ref.radius;
+    var id = ref.id;
+    var max = ref.max;
+    var min = ref.min;
+    var points = genPoints(data, boundary, { max: max, min: min });
+    var d = genPath(points, smooth ? radius : 0);
 
     return h('path', {
-      attrs: { d: d, fill: 'none', stroke: ("url(#" + (this.id) + ")") }
+      attrs: { d: d, fill: 'none', stroke: ("url(#" + id + ")") }
     })
   }
 };
@@ -170,8 +178,14 @@ var Trend$1 = {
       type: Array,
       default: function () { return ['#000']; }
     },
-    max: Number,
-    min: Number,
+    max: {
+      type: Number,
+      default: -Infinity
+    },
+    min: {
+      type: Number,
+      default: Infinity
+    },
     height: Number,
     width: Number,
     padding: {
@@ -229,10 +243,6 @@ var Trend$1 = {
     };
     var props = this.$props;
 
-    props.range = {
-      max: !isNaN(this.max) ? this.max : Math.max.apply(Math, this.data),
-      min: !isNaN(this.min) ? this.min : Math.min.apply(Math, this.data)
-    };
     props.boundary = boundary;
     props.id = 'vue-trend-' + this._uid;
     return h(
