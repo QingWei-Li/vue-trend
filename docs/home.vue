@@ -8,7 +8,6 @@
       :data="data"
       :gradient="gradient"
       auto-draw
-      :stroke-width="1.4"
       smooth>
     </trend>
 
@@ -19,24 +18,24 @@
 </template>
 
 <script>
-  import Trend from '../src/index.js'
-  import hanabi from 'hanabi'
-  import GithubBadge from 'vue-github-badge'
+import Trend from '../src/index.js';
+import hanabi from 'hanabi';
+import GithubBadge from 'vue-github-badge';
 
   export default {
     components: { Trend, GithubBadge },
 
-    created () {
-      this.data = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]
-      this.gradient = ['#6fa8dc', '#42b983', '#2c3e50']
+  created() {
+    this.data = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0];
+    this.gradient = ['#6fa8dc', '#42b983', '#2c3e50'];
       this.code = hanabi(`<trend
   :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
   :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
   auto-draw
   smooth>
-</trend>`)
-    }
+</trend>`);
   }
+};
 </script>
 
 <style>

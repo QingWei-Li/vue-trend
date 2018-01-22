@@ -1,11 +1,11 @@
-import { genPoints, linearPath, smoothPath } from '../helpers/path'
+import { genPoints, genPath } from '../helpers/path'
 
 export default {
   props: ['smooth', 'data', 'boundary', 'radius', 'id'],
 
   render (h) {
     const points = genPoints(this.data, this.boundary)
-    const d = (this.smooth ? smoothPath : linearPath)(points, this.radius)
+    const d = genPath(points, this.smooth ? this.radius : 0)
 
     return h('path', {
       attrs: { d, fill: 'none', stroke: `url(#${this.id})` }

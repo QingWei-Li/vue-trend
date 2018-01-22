@@ -24,16 +24,10 @@ export function genPoints (arr, { minX, minY, maxX, maxY }) {
   })
 }
 
-export function linearPath (points) {
-  const { x, y } = points.shift()
-
-  return `M${x} ${y}` + points.map(({ x, y }) => `L${x} ${y}`).join('')
-}
-
 /**
  * From https://github.com/unsplash/react-trend/blob/master/src/helpers/DOM.helpers.js#L18
  */
-export function smoothPath (points, radius) {
+export function genPath (points, radius) {
   const start = points.shift()
 
   return (
@@ -58,7 +52,9 @@ export function smoothPath (points, radius) {
         const before = moveTo(prev, point, radiusForPoint)
         const after = moveTo(next, point, radiusForPoint)
 
-        return `L${before.x} ${before.y}S${point.x} ${point.y} ${after.x} ${after.y}`
+        return `L${before.x} ${before.y}S${point.x} ${point.y} ${after.x} ${
+          after.y
+        }`
       })
       .join('')
   )

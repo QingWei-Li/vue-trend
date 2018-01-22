@@ -1,6 +1,5 @@
 import Path from './path'
 import Gradient from './gradient'
-import { injectStyle } from '../helpers/dom'
 
 export default {
   name: 'Trend',
@@ -19,7 +18,10 @@ export default {
       type: String,
       default: 'ease'
     },
-    gradient: Array,
+    gradient: {
+      type: Array,
+      default: () => ['#000']
+    },
     height: Number,
     width: Number,
     padding: {
@@ -33,59 +35,30 @@ export default {
     smooth: Boolean
   },
 
-  destroyed () {
-    this.removeStyle()
-  },
-
-  methods: {
-    addStyle () {
-      this.removeStyle()
-      const len = this.$refs.path.$el.getTotalLength()
-      const { pathId, autoDrawDuration, autoDrawEasing, autoDraw } = this
-
-      if (!autoDraw) {
-        return
-      }
-
-      this.styleEl = injectStyle(`
-@keyframes ${pathId}-autodraw {
-  0% {
-  stroke-dashoffset: ${len};
-  stroke-dasharray: ${len};
-}
-100% {
-  stroke-dashoffset: 0;
-  stroke-dasharray: ${len};
-}
-100% {
-  stroke-dashoffset: '';
-  stroke-dasharray: '';
-}
-}
-@keyframes ${pathId}-autodraw-cleanup {
-to {
-  stroke-dashoffset: '';
-  stroke-dasharray: '';
-  }
-}
-#${pathId} {
-animation:
-  ${pathId}-autodraw ${autoDrawDuration}ms ${autoDrawEasing},
-  ${pathId}-autodraw-cleanup 1ms ${autoDrawDuration}ms;
-}`)
-    },
-
-    removeStyle () {
-      this.styleEl && this.styleEl.remove()
-    }
-  },
-
   watch: {
     data: {
       immediate: true,
       handler (val) {
-        if (!val || val.length < 2) return
-        this.$nextTick(this.addStyle)
+        this.$nextTick(() => {
+          if (!this.autoDraw) {
+            return
+          }
+
+          const path = this.$refs.path.$el
+          const length = path.getTotalLength()
+
+          path.style.transition = 'none'
+          path.style.strokeDasharray = length + ' ' + length
+          path.style.strokeDashoffset = Math.abs(
+            length - (this.lastLength || 0)
+          )
+          path.getBoundingClientRect()
+          path.style.transition = `stroke-dashoffset ${
+            this.autoDrawDuration
+          }ms ${this.autoDrawEasing}`
+          path.style.strokeDashoffset = 0
+          this.lastLength = length
+        })
       }
     }
   },
@@ -96,30 +69,31 @@ animation:
     const viewWidth = width || 300
     const viewHeight = height || 75
     const boundary = {
-      minX: padding, minY: padding,
-      maxX: viewWidth - padding, maxY: viewHeight - padding
+      minX: padding,
+      minY: padding,
+      maxX: viewWidth - padding,
+      maxY: viewHeight - padding
     }
     const props = this.$props
 
     props.boundary = boundary
     props.id = 'vue-trend-' + this._uid
-    this.pathId = props.id + '-path'
-
-    return h('svg', {
-      attrs: {
-        stroke: 'black',
-        'stroke-width': '1',
-        width: width || '100%',
-        height: height || '25%',
-        viewBox: `0 0 ${viewWidth} ${viewHeight}`
-      }
-    }, [
-      h(Gradient, { props }),
-      h(Path, {
-        props,
-        attrs: { id: this.pathId },
-        ref: 'path'
-      })
-    ])
+    return h(
+      'svg',
+      {
+        attrs: {
+          width: width || '100%',
+          height: height || '25%',
+          viewBox: `0 0 ${viewWidth} ${viewHeight}`
+        }
+      },
+      [
+        h(Gradient, { props }),
+        h(Path, {
+          props,
+          ref: 'path'
+        })
+      ]
+    )
   }
 }
