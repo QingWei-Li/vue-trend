@@ -22,8 +22,14 @@ export default {
       type: Array,
       default: () => ['#000']
     },
-    max: Number,
-    min: Number,
+    max: {
+      type: Number,
+      default: -Infinity
+    },
+    min: {
+      type: Number,
+      default: Infinity
+    },
     height: Number,
     width: Number,
     padding: {
@@ -78,10 +84,6 @@ export default {
     }
     const props = this.$props
 
-    props.range = {
-      max: !isNaN(this.max) ? this.max : Math.max(...this.data),
-      min: !isNaN(this.min) ? this.min : Math.min(...this.data)
-    }
     props.boundary = boundary
     props.id = 'vue-trend-' + this._uid
     return h(
