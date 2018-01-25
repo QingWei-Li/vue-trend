@@ -48,7 +48,7 @@ export default {
       immediate: true,
       handler (val) {
         this.$nextTick(() => {
-          if (!this.autoDraw) {
+          if (this.$isServer || !this.$refs.path || !this.autoDraw) {
             return
           }
 
