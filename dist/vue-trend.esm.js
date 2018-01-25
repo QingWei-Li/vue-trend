@@ -200,7 +200,7 @@ var Trend$1 = {
         var this$1 = this;
 
         this.$nextTick(function () {
-          if (!this$1.autoDraw) {
+          if (this$1.$isServer || !this$1.$refs.path || !this$1.autoDraw) {
             return
           }
 
