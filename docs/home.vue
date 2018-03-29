@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Trend from '../src/index.js';
+import Trend from 'vuetrend';
 import hanabi from 'hanabi';
 import GithubBadge from 'vue-github-badge';
 
