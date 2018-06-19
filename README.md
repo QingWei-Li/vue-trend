@@ -1,3 +1,10 @@
+
+<p align=center>🔥🔥🔥</p>
+<p align=center>More powerful, more flexible chart library for Vue.js 👉 https://github.com/QingWei-Li/laue</p>
+<p align=center>🔥🔥🔥</p>
+
+----
+
 <div align="center">
   <img src="https://cloud.githubusercontent.com/assets/7565692/23977197/9da0b77c-0a27-11e7-8f14-4d3845a524a0.png" width="500" alt="Vue Trend">
   <br>
