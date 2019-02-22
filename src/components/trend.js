@@ -22,6 +22,10 @@ export default {
       type: Array,
       default: () => ['#000']
     },
+    fillOpacity: {
+      type: String,
+      default: '0'
+    },
     max: {
       type: Number,
       default: -Infinity
