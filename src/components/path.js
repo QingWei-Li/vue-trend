@@ -9,7 +9,7 @@ export default {
     const d = genPath(points, smooth ? radius : 0)
 
     return h('path', {
-      attrs: { d, fill: `url(#${id}`, 'fill-opacity': this.fillOpacity, stroke: `url(#${id})` }
+      attrs: { d, fill: `url(#${id})`, 'fill-opacity': this.fillOpacity, stroke: `url(#${id})` }
     })
   }
 }
