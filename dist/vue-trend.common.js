@@ -96,7 +96,7 @@ function genPath (points, radius) {
 }
 
 var Path = {
-  props: ['smooth', 'data', 'boundary', 'radius', 'id', 'max', 'min'],
+  props: ['smooth', 'data', 'boundary', 'radius', 'id', 'max', 'min', 'gradient', 'fillOpacity'],
 
   render: function render (h) {
     var ref = this;
@@ -111,7 +111,7 @@ var Path = {
     var d = genPath(points, smooth ? radius : 0);
 
     return h('path', {
-      attrs: { d: d, fill: 'none', stroke: ("url(#" + id + ")") }
+      attrs: { d: d, fill: ("url(#" + id), 'fill-opacity': this.fillOpacity, stroke: ("url(#" + id + ")") }
     })
   }
 };
@@ -173,6 +173,10 @@ var Trend$1 = {
     gradient: {
       type: Array,
       default: function () { return ['#000']; }
+    },
+    fillOpacity: {
+      type: String,
+      default: '0'
     },
     max: {
       type: Number,
