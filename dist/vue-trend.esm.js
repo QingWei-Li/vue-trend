@@ -109,7 +109,7 @@ var Path = {
     var d = genPath(points, smooth ? radius : 0);
 
     return h('path', {
-      attrs: { d: d, fill: ("url(#" + id), 'fill-opacity': this.fillOpacity, stroke: ("url(#" + id + ")") }
+      attrs: { d: d, fill: ("url(#" + id + ")"), 'fill-opacity': this.fillOpacity, stroke: ("url(#" + id + ")") }
     })
   }
 };
