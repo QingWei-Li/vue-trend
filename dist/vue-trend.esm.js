@@ -115,11 +115,12 @@ var Path = {
 };
 
 var Gradient = {
-  props: ['gradient', 'id'],
+  props: ['gradient', 'gradientDirection', 'id'],
 
-  render: function render (h) {
+  render: function render(h) {
     var ref = this;
     var gradient = ref.gradient;
+    var gradientDirection = ref.gradientDirection;
     var id = ref.id;
     var len = gradient.length - 1 || 1;
     var stops = gradient
@@ -135,14 +136,19 @@ var Gradient = {
 
     return h('defs', [
       h(
-        'linearGradient',
-        {
+        'linearGradient', {
           attrs: {
             id: id,
+            /*
             x1: 0,
             y1: 0,
             x2: 0,
             y2: 1
+            */
+            x1: +(gradientDirection === 'left'),
+            y1: +(gradientDirection === 'top'),
+            x2: +(gradientDirection === 'right'),
+            y2: +(gradientDirection === 'bottom')
           }
         },
         stops
@@ -172,6 +178,10 @@ var Trend$1 = {
       type: Array,
       default: function () { return ['#000']; }
     },
+    gradientDirection: {
+      type: String,
+      default: 'top'
+    },
     max: {
       type: Number,
       default: -Infinity
@@ -196,7 +206,7 @@ var Trend$1 = {
   watch: {
     data: {
       immediate: true,
-      handler: function handler (val) {
+      handler: function handler(val) {
         var this$1 = this;
 
         this.$nextTick(function () {
@@ -221,7 +231,7 @@ var Trend$1 = {
     }
   },
 
-  render: function render (h) {
+  render: function render(h) {
     if (!this.data || this.data.length < 2) { return }
     var ref = this;
     var width = ref.width;
@@ -240,8 +250,7 @@ var Trend$1 = {
     props.boundary = boundary;
     props.id = 'vue-trend-' + this._uid;
     return h(
-      'svg',
-      {
+      'svg', {
         attrs: {
           width: width || '100%',
           height: height || '25%',
@@ -249,7 +258,9 @@ var Trend$1 = {
         }
       },
       [
-        h(Gradient, { props: props }),
+        h(Gradient, {
+          props: props
+        }),
         h(Path, {
           props: props,
           ref: 'path'
