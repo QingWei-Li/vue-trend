@@ -22,6 +22,10 @@ export default {
       type: Array,
       default: () => ['#000']
     },
+    gradientDirection: {
+      type: String,
+      default: 'top'
+    },
     max: {
       type: Number,
       default: -Infinity
@@ -46,7 +50,7 @@ export default {
   watch: {
     data: {
       immediate: true,
-      handler (val) {
+      handler(val) {
         this.$nextTick(() => {
           if (this.$isServer || !this.$refs.path || !this.autoDraw) {
             return
@@ -71,9 +75,13 @@ export default {
     }
   },
 
-  render (h) {
+  render(h) {
     if (!this.data || this.data.length < 2) return
-    const { width, height, padding } = this
+    const {
+      width,
+      height,
+      padding
+    } = this
     const viewWidth = width || 300
     const viewHeight = height || 75
     const boundary = {
@@ -87,8 +95,7 @@ export default {
     props.boundary = boundary
     props.id = 'vue-trend-' + this._uid
     return h(
-      'svg',
-      {
+      'svg', {
         attrs: {
           width: width || '100%',
           height: height || '25%',
@@ -96,7 +103,9 @@ export default {
         }
       },
       [
-        h(Gradient, { props }),
+        h(Gradient, {
+          props
+        }),
         h(Path, {
           props,
           ref: 'path'

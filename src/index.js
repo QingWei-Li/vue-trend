@@ -1,6 +1,6 @@
 import Trend from './components/trend'
 
-Trend.install = function (Vue) {
+Trend.install = function(Vue) {
   Vue.component(Trend.name, Trend)
 }
 
