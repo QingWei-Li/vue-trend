@@ -2,3 +2,4 @@ node_modules
 docs/dist
 *npm-log*
 npm-debug.log
+dist
