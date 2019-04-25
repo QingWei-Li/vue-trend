@@ -50,7 +50,7 @@ export default {
   watch: {
     data: {
       immediate: true,
-      handler(val) {
+      handler (val) {
         this.$nextTick(() => {
           if (this.$isServer || !this.$refs.path || !this.autoDraw) {
             return
@@ -75,7 +75,7 @@ export default {
     }
   },
 
-  render(h) {
+  render (h) {
     if (!this.data || this.data.length < 2) return
     const {
       width,

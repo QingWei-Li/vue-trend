@@ -1,7 +1,7 @@
 export default {
   props: ['gradient', 'gradientDirection', 'id'],
 
-  render(h) {
+  render (h) {
     const {
       gradient,
       gradientDirection,
