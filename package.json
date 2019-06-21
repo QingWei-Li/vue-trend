@@ -35,7 +35,7 @@
     "vue": "^2.2.4"
   },
   "devDependencies": {
-    "eslint": "^3.17.1",
+    "eslint": "^4.18.2",
     "eslint-config-vue": "^2.0.2",
     "eslint-plugin-vue": "^2.0.1",
     "gh-pages": "^0.12.0",
