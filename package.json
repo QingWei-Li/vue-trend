@@ -28,7 +28,7 @@
     "type": "git",
     "url": "https://github.com/QingWei-Li/vue-trend.git"
   },
-  "homepage": "http://localhost:8000/",
+  "homepage": "https://cinwell.com/vue-trend/",
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "license": "MIT",
   "peerDependencies": {
