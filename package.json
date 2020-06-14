@@ -28,7 +28,7 @@
     "type": "git",
     "url": "https://github.com/QingWei-Li/vue-trend.git"
   },
-  "homepage": "https://cinwell.com/vue-trend/",
+  "homepage": "http://localhost:8000/",
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "license": "MIT",
   "peerDependencies": {
@@ -45,6 +45,9 @@
     "rollup-plugin-buble": "^0.15.0",
     "uglify-js": "^2.8.10",
     "vbuild": "^6.24.2",
-    "vue-github-badge": "^1.0.0"
+    "vue-github-badge": "^1.0.0",
+    "vue-nav-tabs": "^0.5.7",
+    "vue-slider-component": "^3.1.5",
+    "vue-swatches": "^2.1.0"
   }
 }
